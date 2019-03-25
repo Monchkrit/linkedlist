@@ -20,13 +20,10 @@ end
   def reverse_list(list, previous=nil)
       
     if list
-        list.next_node = next_node.next_node
-      @node = list
-      @prev_node = @node.next_node
-      @list.next_node = @prev_node
-      print "#{@list.value}, #{@list.next_node.value}"
+      list.next_node = previous
 
     else
+      previous.next_node = nil
       return
     end
   end
@@ -37,4 +34,10 @@ node3 = LinkedListNode.new(12, node2)
 node4 = LinkedListNode.new(85, node3)
 node5 = LinkedListNode.new(26, node4)
 node6 = LinkedListNode.new(68, node5)
-reverse_list(node1)
+reverse_list(node1, node2)
+reverse_list(node2, node3)
+reverse_list(node3, node4)
+reverse_list(node4, node5)
+reverse_list(node5, node6)
+reverse_list(node6)
+print_values(node1)
